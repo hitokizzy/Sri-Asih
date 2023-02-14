@@ -12,7 +12,7 @@ from Python_ARQ import ARQ
 from telegraph import Telegraph
 
 from config import *
-ALIVE_LOGO = "https://telegra.ph//file/8f89a9491e2da00ed3883.jpg"
+ALIVE_LOGO = "https://telegra.ph/file/5d71546548f5a2e3a896e.png"
 GBAN_LOG_GROUP_ID = GBAN_LOG_GROUP_ID
 SUDOERS = DEVS
 WELCOME_DELAY_KICK_SEC = WELCOME_DELAY_KICK_SEC
