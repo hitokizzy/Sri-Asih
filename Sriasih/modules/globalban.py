@@ -7,15 +7,14 @@ from pyrogram.types import Message
 
 from Sriasih import app, SUDOERS
 from Sriasih.utils.formatter import get_readable_time
-from Sriasih.utils.dbfunctions import (add_banned_user,
-                                       get_banned_count,
-                                       get_banned_users,
+from Sriasih.utils.dbfunctions import (add_gban_user,
+                                       get_gbans_count,
+                                       is_gbanned_user,
                                        get_served_chats,
-                                       is_banned_user,
-                                       remove_banned_user)
+                                       remove_gban_user)
 
 
-BANNED_USER = environ.get("BANNED_USER" or None)  
+BANNED_USERS = environ.get("BANNED_USERS" or None)  
 
 @app.on_message(filters.command("gban") & SUDOERS)
 async def gbanuser(client, message: Message):
@@ -35,7 +34,7 @@ async def gbanuser(client, message: Message):
         return await message.reply_text("Haruskah saya memblokir diri saya sendiri? Lol")
     elif user_id in SUDOERS:
         return await message.reply_text("Anda ingin memblokir pengguna sudo?")
-    is_gbanned = await is_banned_user(user_id)
+    is_gbanned = await is_gbanned_user(user_id)
     if is_gbanned:
         return await message.reply_text(f"{mention} sudah di GBANNED")
     if user_id not in BANNED_USERS:
@@ -56,7 +55,7 @@ async def gbanuser(client, message: Message):
             await asyncio.sleep(int(e.x))
         except Exception:
             pass
-    await add_banned_user(user_id)
+    await add_gban_user(user_id)
     await message.reply_text(f"{mention}Berhasil di GBAN\nDari {number_of_chats}"
     )
     await mystic.delete()
@@ -74,7 +73,7 @@ async def gungabn(client, message: Message):
     else:
         user_id = message.reply_to_message.from_user.id
         mention = message.reply_to_message.from_user.mention
-    is_gbanned = await is_banned_user(user_id)
+    is_gbanned = await is_gbanned_user(user_id)
     if not is_gbanned:
         return await message.reply_text(f"{mention} tidak ada di list Gban")
     if user_id in BANNED_USERS:
@@ -97,7 +96,7 @@ async def gungabn(client, message: Message):
             await asyncio.sleep(int(e.x))
         except Exception:
             pass
-    await remove_banned_user(user_id)
+    await remove_gban_user(user_id)
     await message.reply_text(
         f"{mention}Berhasil di UNGBAN\nDari {number_of_chats}"
     )
@@ -106,13 +105,13 @@ async def gungabn(client, message: Message):
 
 @app.on_message(filters.command("gbanlist") & SUDOERS)
 async def gbanned_list(client, message: Message, _):
-    counts = await get_banned_count()
+    counts = await get_gbans_count()
     if counts == 0:
         return await message.reply_text("Tidak ada list Gbanned User")
     mystic = await message.reply_text("mengambil list Gbanned User")
     msg = "Gbanned Users:\n\n"
     count = 0
-    users = await get_banned_users()
+    users = await is_gbanned_user()
     for user_id in users:
         count += 1
         try:
