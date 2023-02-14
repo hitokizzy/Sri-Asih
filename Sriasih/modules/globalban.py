@@ -1,11 +1,10 @@
 import asyncio
 import time
-
+from os import environ
 from pyrogram import filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 
-from Sriasih import BANNED_USERS
 from Sriasih import app, SUDOERS
 from Sriasih.utils import get_readable_time
 from Sriasih.utils.dbfunctions import (add_banned_user,
@@ -16,7 +15,7 @@ from Sriasih.utils.dbfunctions import (add_banned_user,
                                        remove_banned_user)
 
 
-
+BANNED_USER = environ.get("BANNED_USER" or None)  
 
 @app.on_message(filters.command("gban") & SUDOERS)
 async def gbanuser(client, message: Message):
