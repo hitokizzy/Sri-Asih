@@ -11,7 +11,7 @@
     "telegram-bot",
     "pyrogram"
     ],
-    "stack": "container",
+    "stack": "heroku-22",
     "env": {
         "BOT_TOKEN": {
             "description": "Obtain a Telegram bot token by contacting @BotFather",
