@@ -102,11 +102,8 @@ y = bot1.get_me
 
 BOT_ID = x.id
 BOT_NAME = x.first_name + (x.last_name or "")
-ASST_NAME = y.first_name + (y.last_name or "")
 BOT_USERNAME = x.username
-ASST_USERNAME = y.username
 BOT_MENTION = x.mention
-ASST_MENTION = y.mention
 BOT_DC_ID = x.dc_id
 
 telegraph = Telegraph()

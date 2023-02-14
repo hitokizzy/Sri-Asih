@@ -7,7 +7,7 @@ from pyrogram import enums, filters, idle
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from uvloop import install
 
-from Sriasih import BOT_NAME, ASST_NAME, BOT_USERNAME, ASST_USERNAME, LOG_GROUP_ID, aiohttpsession, app, bot1
+from Sriasih import BOT_NAME, BOT_USERNAME, LOG_GROUP_ID, aiohttpsession, app, bot1
 from Sriasih.modules import ALL_MODULES
 from Sriasih.modules.sudoers import bot_sys_stats
 from Sriasih.utils import paginate_modules
@@ -23,7 +23,7 @@ async def start_bot():
     global HELPABLE
 
     for module in ALL_MODULES:
-        imported_module = importlib.import_module(f"pitung.modules.{module}")
+        imported_module = importlib.import_module(f"Sriasih.modules.{module}")
         if (
             hasattr(imported_module, "__MODULE__")
             and imported_module.__MODULE__
@@ -44,41 +44,11 @@ async def start_bot():
             bot_modules += "|{:<15}".format(i)
         j += 1
     print("+===============================================================+")
-    print("|                PITUNG SUPERBOT by GEEZ RAM                    |")
+    print("|                SRIASIH SUPERBOT by GEEZ RAM                    |")
     print("+===============+===============+===============+===============+")
     print(bot_modules)
     print("+===============+===============+===============+===============+")
-    
-
-    
-async def start_asst():
-    global HELPABLE
-
-    for module in ALL_MODULES:
-        imported_module = importlib.import_module(f"pitung.assistant.{module}")
-        if (
-            hasattr(imported_module, "__MODULE__")
-            and imported_module.__MODULE__
-        ):
-            imported_module.__MODULE__ = imported_module.__MODULE__
-            if (
-                hasattr(imported_module, "__HELP__")
-                and imported_module.__HELP__
-            ):
-                HELPABLE[imported_module.__MODULE__.lower()] = imported_module
-    asst_modules = ""
-    j = 1
-    for i in ALL_MODULES:
-        if j == 4:
-            asst_modules += "|{:<15}|\n".format(i)
-            j = 0
-        else:
-            asst_modules += "|{:<15}".format(i)
-        j += 1
-    print(asst_modules)
-    print("+===============+===============+===============+===============+")
     print(f"[INFO]: BOT STARTED AS {BOT_NAME}!")
-    print(f"[INFO]: ASSISTANT STARTED AS {ASST_NAME}!")
 
     restart_data = await clean_restart_stage()
 
@@ -93,11 +63,10 @@ async def start_asst():
 
         else:
             await app.send_message(LOG_GROUP_ID, "Bot started!")
-            await bot1.send_message(LOG_GROUP_ID, "Assistant Online!")
     except Exception:
         pass
 
-
+    
     await idle()
 
     await aiohttpsession.close()
@@ -117,7 +86,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
             ),
             InlineKeyboardButton(
                 text="Repo",
-                url="https://github.com/hitokizzy/sipitung-bot",
+                url="https://github.com/hitokizzy/Sri-Asih",
             ),
         ],
         [
@@ -151,7 +120,7 @@ keyboard = InlineKeyboardMarkup(
             ),
             InlineKeyboardButton(
                 text="Repo",
-                url="https://github.com/hitokizzy/sipitung-bot",
+                url="https://github.com/hitokizzy/Sri-Asih",
             ),
         ],
         [
