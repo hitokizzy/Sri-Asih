@@ -63,7 +63,7 @@ cp sample_config.env config.env
 </h2>
 
 ```console
-python3 -m Sri-Asih
+python3 -m Sriasih
 ```
 
 
@@ -82,7 +82,7 @@ python3 -m Sri-Asih
 
 ```console
 git clone https://github.com/hitokizzy/Sri-Asih
-cd Sri-Asih
+cd Sriasih
 cp sample_config.env config.env
 ```
 
