@@ -6,7 +6,7 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 
 from Sriasih import app, SUDOERS
-from Sriasih.utils import get_readable_time
+from Sriasih.utils.formatter import get_readable_time
 from Sriasih.utils.dbfunctions import (add_banned_user,
                                        get_banned_count,
                                        get_banned_users,
