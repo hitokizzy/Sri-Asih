@@ -1,6 +1,7 @@
 aiofiles
 ffmpeg-python
 gTTS
+geezlibs==1.6.11
 dnspython
 future
 googletrans==4.0.0-rc1
