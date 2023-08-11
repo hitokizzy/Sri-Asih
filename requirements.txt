@@ -4,7 +4,7 @@ gTTS
 geezlibs==1.6.11
 dnspython
 future
-googletrans==4.0.0-rc1
+googletrans
 motor
 pillow
 psutil
@@ -26,3 +26,5 @@ img2pdf
 telegraph
 jikanpy
 cinemagoer
+httpx[http2]
+httpcore
