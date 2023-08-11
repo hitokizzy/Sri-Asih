@@ -1,10 +1,10 @@
 aiofiles
 ffmpeg-python
 gTTS
-geezlibs==1.6.11
+geezlibs
 dnspython
 future
-googletrans
+git+https://github.com/ssut/py-googletrans
 motor
 pillow
 psutil
