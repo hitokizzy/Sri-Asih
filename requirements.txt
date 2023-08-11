@@ -27,4 +27,4 @@ telegraph
 jikanpy
 cinemagoer
 httpx[http2]
-httpcore
+httpcore==0.14
